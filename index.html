@@ -1,174 +1,493 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Marios Georgiades</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
 
-		<div id="hidden-terminal" class="hidden">
-			<div class="terminal-window">
-				<div class="terminal-header">
-					<div class="terminal-buttons">
-						<span class="terminal-close"></span>
-						<span class="terminal-min"></span>
-						<span class="terminal-max"></span>
-					</div>
-					<div class="terminal-title">marios-georgiades:~</div>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="referrer" content="strict-origin-when-cross-origin" />
+	<title>Marios Georgiades — Software Engineer & Endurance Athlete</title>
+	<meta name="description"
+		content="Marios Georgiades — recent high-school graduate from Nicosia building homelabs, local LLMs, and competitive-programming solutions. Cyprus Backyard Ultra finisher." />
+	<meta name="author" content="Marios Georgiades" />
+	<meta name="theme-color" content="#050505" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Marios Georgiades — Software Engineer & Endurance Athlete" />
+	<meta property="og:description"
+		content="Recent high-school graduate from Nicosia. Homelabs, local LLMs, competitive programming, Cyprus Backyard Ultra finisher." />
+	<meta name="twitter:card" content="summary_large_image" />
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Marios Georgiades",
+		"jobTitle": "Aspiring Software Engineer",
+		"description": "Recent high-school graduate, developer, and ultramarathoner from Strovolos, Nicosia. Heading into national service before university.",
+		"url": "https://github.com/MariosGeorgiades",
+		"sameAs": ["https://github.com/MariosGeorgiades","https://www.linkedin.com/in/marios-georgiades"],
+		"knowsAbout": ["Software Engineering","Linux","Docker","Local LLMs","Competitive Programming","Networking"],
+		"address": {"@type":"PostalAddress","addressLocality":"Strovolos","addressRegion":"Nicosia","addressCountry":"CY"}
+	}
+	</script>
+
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; connect-src 'self'" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+	<link rel="stylesheet" href="main.css" />
+	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Crect%20width=%2264%22%20height=%2264%22%20rx=%2212%22%20fill=%22%23050608%22/%3E%3Ctext%20x=%2232%22%20y=%2240%22%20text-anchor=%22middle%22%20font-family=%22Orbitron,monospace%22%20font-weight=%22900%22%20font-size=%2226%22%20fill=%22%2300f0ff%22%3EMG%3C/text%3E%3C/svg%3E" />
+</head>
+
+<body class="is-preload">
+
+	<a href="#main-content" class="skip-link">Skip to content</a>
+
+	<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+	<div id="hidden-terminal" class="hidden" aria-hidden="true">
+		<div class="terminal-window">
+			<div class="terminal-header">
+				<div class="terminal-buttons">
+					<span class="terminal-close" role="button" tabindex="0" aria-label="Close terminal"></span>
+					<span class="terminal-min"></span>
+					<span class="terminal-max"></span>
 				</div>
-				<div class="terminal-body">
-					<p>MariosGeorgiades [Version 2.0.25]</p>
-					<p>(c) 2025 MG Corp. All rights reserved.</p>
-					<br>
-					<p>C:\Users\Guest> help</p>
-					<p><span class="terminal-highlight">SECRET_COMMANDS.txt</span></p>
-					<p>  - about       (Displays bio)</p>
-					<p>  - projects    (Lists key skills)</p>
-					<p>  - contact     (Provides contact info)</p>
-					<p>  - exit        (Closes this terminal)</p>
-					<br>
-					<p>C:\Users\Guest> You found the Konami code! Nice job.</p>
-					<p>C:\Users\Guest> Press 'Esc' to close this window.</p>
-					<p class="terminal-cursor">_</p>
-				</div>
+				<div class="terminal-title">marios-georgiades:~</div>
+			</div>
+			<div class="terminal-body">
+				<p>MariosGeorgiades [Version 2.0.26]</p>
+				<p>(c) 2026 MG Corp. All rights reserved.</p>
+				<br>
+				<p>C:\Users\Guest&gt; help</p>
+				<p><span class="terminal-highlight">SECRET_COMMANDS.txt</span></p>
+				<p> - about (Displays bio)</p>
+				<p> - projects (Lists key skills)</p>
+				<p> - contact (Provides contact info)</p>
+				<p> - exit (Closes this terminal)</p>
+				<br>
+				<p>C:\Users\Guest&gt; You found the Konami code. Nice.</p>
+				<p>C:\Users\Guest&gt; Press 'Esc' to close this window.</p>
+				<p class="terminal-cursor">_</p>
 			</div>
 		</div>
+	</div>
 
-		<div id="wrapper" class="fade-in">
+	<header id="topnav" role="banner">
+		<a href="#hero" class="nav-brand" aria-label="Marios Georgiades — home">
+			<span class="brand-bracket">[</span>MG<span class="brand-bracket">]</span>
+		</a>
+		<nav id="primary-nav" aria-label="Primary">
+			<button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Toggle navigation">
+				<span></span><span></span><span></span>
+			</button>
+			<ul id="nav-list">
+				<li><a href="#about">About</a></li>
+				<li><a href="#skills">Skills</a></li>
+				<li><a href="#projects">Projects</a></li>
+				<li><a href="#endurance">Endurance</a></li>
+				<li><a href="#certifications">Certifications</a></li>
+				<li><a href="#contact" class="nav-cta">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
 
-			<div id="intro">
-				<h1>Marios Georgiades</h1>
-				<p><br />Hi! I'm Marios Georgiades, a high school student from Strovolos, Lefkosia with big ambitions and even bigger goals. I'm passionate about all things technology and fitness—by day, I'm coding, building games, and tackling competitive programming challenges; by evening, you'll find me running ultramarathons, weight training, or pushing boundaries with calisthenics.
+	<main id="main-content">
 
-I dream of building a career in software engineering at a leading tech company (think Google or Microsoft), and I thrive on hackathons and collaborative projects.
+		<section id="hero" class="hero">
+			<div class="hero-inner">
+				<h1 class="hero-name" data-glitch="Marios Georgiades">Marios Georgiades</h1>
+				<p class="hero-role">
+					<span class="hero-role-prefix">&gt; </span><span id="hero-typed" aria-live="polite"></span><span class="caret" aria-hidden="true">|</span>
+				</p>
+				<p class="hero-tagline">
+					Software engineer in training. I run my own Linux homelab, fine-tune local LLMs,
+					grind competitive programming, and put in 100&#8209;mile weeks on the trail. I bring the
+					discipline of an ultramarathoner to the keyboard.
+				</p>
+				<div class="hero-actions">
+					<a href="#projects" class="btn btn-primary">
+						<i class="fa-solid fa-code" aria-hidden="true"></i> View projects
+					</a>
+					<a href="https://github.com/MariosGeorgiades" class="btn btn-ghost" rel="noopener">
+						<i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+					</a>
+					<a href="#contact" class="btn btn-ghost">
+						<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Get in touch
+					</a>
+				</div>
 
-My journey is just beginning, and I'm excited to connect, collaborate, and create. Let's build something great together!</p>
-				<ul class="actions">
-					<li><a href="#main" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-				</ul>
+				<div class="hero-stats" aria-label="Quick stats">
+					<div class="stat"><span class="stat-num">9+</span><span class="stat-label">Shipped projects</span></div>
+					<div class="stat"><span class="stat-num">4</span><span class="stat-label">Daily languages</span></div>
+					<div class="stat"><span class="stat-num">CCNA</span><span class="stat-label">Network certified</span></div>
+					<div class="stat"><span class="stat-num">Mar &rsquo;26</span><span class="stat-label">Cyprus Backyard Ultra</span></div>
+				</div>
+
+				<div class="scroll-cue" aria-hidden="true"><span></span></div>
+			</div>
+		</section>
+
+		<section id="about" class="section">
+			<div class="section-header">
+				<span class="eyebrow">01 — About</span>
+				<h2>Who's behind the keyboard</h2>
+			</div>
+			<div class="about-grid">
+				<div class="about-copy">
+					<p>I'm Marios — a recent high-school graduate from <strong>Strovolos, Nicosia</strong>, heading into a year of national service before university. I started writing code because games wouldn't build themselves; I stayed because nothing else gives that feedback loop.</p>
+					<p>By day I'm shipping side projects, breaking and rebuilding my homelab, and sharpening my algorithms in Hackerrank Cyprus. By evening I'm logging trail miles, lifting, or training for the next ultra. Both habits feed the same thing: the willingness to sit with a hard problem long after it stops being fun.</p>
+					<p>My north star is a software engineering role at a top tech company. Until then I'm racking up reps — open-source, hackathons, homelab experiments, and any remote technical work I can fit around national service.</p>
+				</div>
+				<aside class="about-card" aria-label="Profile snapshot">
+					<pre class="code-stats"><code>{
+  <span class="key">"role"</span>:     <span class="string">"Future Software Engineer"</span>,
+  <span class="key">"location"</span>: <span class="string">"Nicosia, CY"</span>,
+  <span class="key">"focus"</span>:    <span class="string">"Systems · AI · Algorithms"</span>,
+  <span class="key">"drive"</span>:    <span class="string">"Relentless"</span>,
+  <span class="key">"caffeine"</span>: <span class="string">"80%"</span>,
+  <span class="key">"status"</span>:   <span class="string">"Ready to deploy"</span>
+}</code></pre>
+				</aside>
 			</div>
 
-			<div id="main">
-				<section class="posts">
-					<article>
-						<header>
-							<h2><a href="https://github.com/MariosGeorgiades/competitive-programming">Competitive Programming</a></h2>
-						</header>
-						<p>A collection of my solutions to problems from various online judges and programming competitions.</p>
-						<div class="tech-tags">
-							<span>C++</span>
-							<span>Algorithms</span>
-							<span>Data Structures</span>
+			<div class="edu-strip">
+				<header class="edu-strip-header">
+					<h3>Education &amp; availability</h3>
+					<p>Where I am on the timeline — and what I'm open to right now.</p>
+				</header>
+				<ol class="timeline">
+					<li class="timeline-item is-done">
+						<span class="timeline-dot" aria-hidden="true"></span>
+						<div class="timeline-body">
+							<span class="timeline-date">May 2026</span>
+							<h4>High school graduate</h4>
+							<p>Finished high school in Strovolos, Nicosia. Twelve years of formal schooling, plus a self-directed parallel curriculum in Linux, ML, and competitive programming.</p>
 						</div>
-					</article>
-					<article>
-						<header>
-							<h2><a href="https://github.com/MariosGeorgiades/apology_app">Apology App</a></h2>
-						</header>
-						<p>A creative application designed to generate sincere apologies, exploring user input and text generation.</p>
-						<div class="tech-tags">
-							<span>JavaScript</span>
-							<span>HTML</span>
-							<span>CSS</span>
+					</li>
+					<li class="timeline-item is-current">
+						<span class="timeline-dot" aria-hidden="true"></span>
+						<div class="timeline-body">
+							<span class="timeline-date">2026 — 2027</span>
+							<h4>Cyprus National Guard <span class="timeline-tag">In progress</span></h4>
+							<p>Mandatory national service. A year of discipline, leadership in small teams, and the kind of structure that makes everything afterwards feel relaxed by comparison.</p>
 						</div>
-					</article>
-					<article>
-						<header>
-							<h2><a href="https://github.com/MariosGeorgiades/quota">Quota</a></h2>
-						</header>
-						<p>An application that delivers daily quotes, built to practice API integration and data display.</p>
-						<div class="tech-tags">
-							<span>JavaScript</span>
-							<span>API</span>
-							<span>Web</span>
+					</li>
+					<li class="timeline-item">
+						<span class="timeline-dot" aria-hidden="true"></span>
+						<div class="timeline-body">
+							<span class="timeline-date">Autumn 2027</span>
+							<h4>University — Computer Science</h4>
+							<p>Heading into a CS programme right after service. Researching options now; the goal is a school that takes systems and AI seriously.</p>
 						</div>
-					</article>
-					<article>
-						<header>
-							<h2><a href="https://github.com/MariosGeorgiades/Python-Project-/blob/main/foodball%20Game%20Pong.py">Football Pong</a></h2>
-						</header>
-						<p>A football-themed version of the classic Pong game, built with Python and the Pygame library.</p>
-						<div class="tech-tags">
-							<span>Python</span>
-							<span>Pygame</span>
-						</div>
-					</article>
-					<article>
-						<header>
-							<h2><a href="https://github.com/MariosGeorgiades/Hackerrank-Cyprus">Hackerrank Cyprus</a></h2>
-						</header>
-						<p>My solutions to the official problems from the Hackerrank Cyprus Olympiad.</p>
-						<div class="tech-tags">
-							<span>Python</span>
-							<span>Competitive</span>
-						</div>
-					</article>
-					<article>
-						<header>
-							<h2><a href="https://github.com/MariosGeorgiades/snake-game">Snake Game</a></h2>
-						</header>
-						<p>A classic implementation of the Snake game using HTML, CSS, and plain JavaScript.</p>
-						<div class="tech-tags">
-							<span>JavaScript</span>
-							<span>HTML</span>
-							<span>CSS</span>
-						</div>
-					</article>
-				</section>
+					</li>
+				</ol>
 
-				<section id="certifications">
-					<header class="major">
-						<h2>Certifications & Skills</h2>
-					</header>
-					<article>
-						<header>
-							<h3>Cisco Certified Network Associate (CCNA)</h3>
-						</header>
-						<a href="#"> <img src="images/ccna-certificate.png" alt="Marios Georgiades's Cisco Certified Network Associate (CCNA) Certificate" class="certificate-image">
+				<div class="open-to">
+					<div class="open-to-head">
+						<span class="status-dot" aria-hidden="true"></span>
+						<h4>Open to right now</h4>
+					</div>
+					<ul class="chips">
+						<li>Remote / part-time technical work during national service</li>
+						<li>Open-source collaboration</li>
+						<li>Software engineering internships</li>
+						<li>AI / ML / data projects</li>
+						<li>Systems / DevOps / infra</li>
+						<li>Full-time internships from autumn 2027 onward</li>
+					</ul>
+					<p class="open-to-note">If something fits any of the above, the inbox is in the <a href="#contact">contact section</a>.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="skills" class="section">
+			<div class="section-header">
+				<span class="eyebrow">02 — Skills</span>
+				<h2>The toolbox</h2>
+			</div>
+			<div class="skills-grid">
+				<article class="skill-cluster">
+					<header><i class="fa-solid fa-code" aria-hidden="true"></i><h3>Languages</h3></header>
+					<ul class="chips"><li>C++</li><li>Python</li><li>JavaScript</li><li>HTML / CSS</li><li>Bash</li></ul>
+				</article>
+				<article class="skill-cluster">
+					<header><i class="fa-solid fa-server" aria-hidden="true"></i><h3>Systems &amp; DevOps</h3></header>
+					<ul class="chips"><li>Linux</li><li>Docker</li><li>Nginx</li><li>Self-hosting</li><li>Networking (CCNA)</li></ul>
+				</article>
+				<article class="skill-cluster">
+					<header><i class="fa-solid fa-brain" aria-hidden="true"></i><h3>AI &amp; Data</h3></header>
+					<ul class="chips"><li>Local LLMs</li><li>Llama / Mistral</li><li>Prompt engineering</li><li>Pygame</li></ul>
+				</article>
+				<article class="skill-cluster">
+					<header><i class="fa-solid fa-flask" aria-hidden="true"></i><h3>Practice</h3></header>
+					<ul class="chips"><li>Algorithms</li><li>Data structures</li><li>Competitive programming</li><li>Hackathons</li><li>Git / GitHub</li></ul>
+				</article>
+			</div>
+		</section>
+
+		<section id="projects" class="section">
+			<div class="section-header">
+				<span class="eyebrow">03 — Projects</span>
+				<h2>What I've been building</h2>
+			</div>
+
+			<div class="featured-grid">
+				<article class="project-card project-card--featured">
+					<a class="project-card-link" href="projects/home-linux-server.html" aria-label="Home Linux Server case study">
+						<div class="project-card-top">
+							<span class="featured-badge"><i class="fa-solid fa-star" aria-hidden="true"></i> Featured</span>
+							<i class="fa-brands fa-linux project-icon" aria-hidden="true"></i>
+						</div>
+						<h3>Home Linux Server</h3>
+						<p>A self-hosted homelab on Linux. Docker-orchestrated services behind Nginx Proxy Manager with Let's Encrypt SSL. Pi-hole DNS, Nextcloud, Plex, Portainer.</p>
+						<ul class="chips chips-sm"><li>Linux</li><li>Docker</li><li>Nginx</li><li>Bash</li><li>Self-Hosting</li></ul>
+						<span class="card-cta">Read case study <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+					</a>
+				</article>
+
+				<article class="project-card project-card--featured">
+					<a class="project-card-link" href="projects/local-ai-llms.html" aria-label="Local AI &amp; LLMs case study">
+						<div class="project-card-top">
+							<span class="featured-badge"><i class="fa-solid fa-star" aria-hidden="true"></i> Featured</span>
+							<i class="fa-solid fa-brain project-icon" aria-hidden="true"></i>
+						</div>
+						<h3>Local AI &amp; LLMs</h3>
+						<p>Running and fine-tuning open-source models (Llama, Mistral) entirely offline. Private, zero-telemetry inference on commodity hardware.</p>
+						<ul class="chips chips-sm"><li>AI</li><li>Python</li><li>Llama</li><li>Quantization</li></ul>
+						<span class="card-cta">Read case study <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+					</a>
+				</article>
+
+				<article class="project-card project-card--featured project-card--multi">
+					<div class="project-card-body">
+						<div class="project-card-top">
+							<span class="featured-badge"><i class="fa-solid fa-star" aria-hidden="true"></i> Featured</span>
+							<span class="live-badge"><span class="live-dot" aria-hidden="true"></span> Live</span>
+						</div>
+						<h3><a href="projects/scout-journey.html" class="card-title-link">Scout Journey</a></h3>
+						<p>Documentation of my journey toward the Government Scout Award — a record of leadership, community service, and the outdoor skills that shaped my discipline and resilience.</p>
+						<ul class="chips chips-sm"><li>Leadership</li><li>Community service</li><li>Outdoors</li></ul>
+					</div>
+					<div class="project-card-actions">
+						<a href="https://scout-journey.vercel.app/" rel="noopener" class="action-link action-primary">
+							<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo
 						</a>
-						
-						<h4>Showcase Topology:</h4>
-						<pre class="network-topology">
+						<a href="projects/scout-journey.html" class="action-link">
+							<i class="fa-solid fa-book-open" aria-hidden="true"></i> Case study
+						</a>
+						<a href="https://github.com/MariosGeorgiades/scout-journey-" rel="noopener" class="action-link">
+							<i class="fa-brands fa-github" aria-hidden="true"></i> Source
+						</a>
+					</div>
+				</article>
+			</div>
+
+			<h3 class="subsection-title">Other work</h3>
+			<div class="projects-grid">
+				<article class="project-card">
+					<a class="project-card-link" href="https://github.com/MariosGeorgiades/Competitive-Programming-Archive" rel="noopener">
+						<div class="project-card-top"><i class="fa-solid fa-trophy project-icon" aria-hidden="true"></i><i class="fa-brands fa-github source-icon" aria-hidden="true"></i></div>
+						<h3>Competitive Programming Archive</h3>
+						<p><em>"I don't study code for the sake of theory; I master technology to build solutions for real-world scenarios."</em> A curated archive of my problem-solving work — algorithms, data structures, and contest write-ups.</p>
+						<ul class="chips chips-sm"><li>C++</li><li>Algorithms</li><li>Data structures</li></ul>
+					</a>
+				</article>
+				<article class="project-card">
+					<a class="project-card-link" href="https://github.com/MariosGeorgiades/Hackerrank-Cyprus" rel="noopener">
+						<div class="project-card-top"><i class="fa-solid fa-flag-checkered project-icon" aria-hidden="true"></i><i class="fa-brands fa-github source-icon" aria-hidden="true"></i></div>
+						<h3>Hackerrank Cyprus</h3>
+						<p>My solutions to the official Hackerrank Cyprus Olympiad problems.</p>
+						<ul class="chips chips-sm"><li>Python</li><li>Competitive</li></ul>
+					</a>
+				</article>
+				<article class="project-card project-card--multi">
+					<div class="project-card-body">
+						<div class="project-card-top">
+							<i class="fa-solid fa-quote-right project-icon" aria-hidden="true"></i>
+							<span class="live-badge"><span class="live-dot" aria-hidden="true"></span> Live</span>
+						</div>
+						<h3><a href="https://quota-v2.vercel.app/" rel="noopener" class="card-title-link">QUOTA — Motivational App</a></h3>
+						<p>A daily-quotes app that delivers a hit of motivation every morning. Iterated from a scrappy v1 prototype into a cleaner v2 rewrite — better state, better UX, better reasons to get out of bed.</p>
+						<ul class="chips chips-sm"><li>JavaScript</li><li>API</li><li>UX</li></ul>
+					</div>
+					<div class="project-card-actions">
+						<a href="https://quota-v2.vercel.app/" rel="noopener" class="action-link action-primary">
+							<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Live demo
+						</a>
+						<a href="https://github.com/MariosGeorgiades/QUOTA-v2" rel="noopener" class="action-link">
+							<i class="fa-brands fa-github" aria-hidden="true"></i> v2 source
+						</a>
+						<a href="https://github.com/MariosGeorgiades/quota-V1" rel="noopener" class="action-link action-muted">
+							<i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> v1 archive
+						</a>
+					</div>
+				</article>
+				<article class="project-card">
+					<a class="project-card-link" href="https://github.com/MariosGeorgiades/APOLOGY_WEBSITE" rel="noopener">
+						<div class="project-card-top"><i class="fa-solid fa-heart project-icon" aria-hidden="true"></i><i class="fa-brands fa-github source-icon" aria-hidden="true"></i></div>
+						<h3>Apology Website</h3>
+						<p>A full-stack, interactive platform built to facilitate reconciliation and emotional expression. Front-end animations meet a Node.js backend to create a meaningful, digital space for communication.</p>
+						<ul class="chips chips-sm"><li>Node.js</li><li>JavaScript</li><li>Full-stack</li><li>Animation</li></ul>
+					</a>
+				</article>
+				<article class="project-card">
+					<a class="project-card-link" href="https://github.com/MariosGeorgiades/Python-Project-/blob/main/foodball%20Game%20Pong.py" rel="noopener">
+						<div class="project-card-top"><i class="fa-solid fa-futbol project-icon" aria-hidden="true"></i><i class="fa-brands fa-github source-icon" aria-hidden="true"></i></div>
+						<h3>Football Pong</h3>
+						<p>A football-themed take on classic Pong, written in Python with Pygame. Two-player local arcade fun.</p>
+						<ul class="chips chips-sm"><li>Python</li><li>Pygame</li></ul>
+					</a>
+				</article>
+				<article class="project-card">
+					<a class="project-card-link" href="https://github.com/MariosGeorgiades/snake-game" rel="noopener">
+						<div class="project-card-top"><i class="fa-solid fa-staff-snake project-icon" aria-hidden="true"></i><i class="fa-brands fa-github source-icon" aria-hidden="true"></i></div>
+						<h3>Snake Game</h3>
+						<p>A classic Snake implementation in vanilla HTML, CSS, and JavaScript — no frameworks, no dependencies.</p>
+						<ul class="chips chips-sm"><li>JavaScript</li><li>HTML</li><li>CSS</li></ul>
+					</a>
+				</article>
+			</div>
+		</section>
+
+		<section id="endurance" class="section section-endurance">
+			<div class="section-header">
+				<span class="eyebrow">04 — Endurance</span>
+				<h2>The other half of the equation</h2>
+				<p class="section-sub">Code is the day job. Long-distance running is the proof I can stay in a hard thing for hours after it stops being fun.</p>
+			</div>
+
+			<div class="endurance-grid">
+				<article class="endurance-card">
+					<div class="endurance-icon"><i class="fa-solid fa-person-running" aria-hidden="true"></i></div>
+					<h3>Ultramarathons</h3>
+					<p>Trail and road ultras over the past two seasons — most recently the <strong>Cyprus Backyard Ultra (14 Mar 2026)</strong>, my longest race to date. Pacing strategy, fueling, blister logistics, and the back-half mental game — all of it transfers to debugging at 2am.</p>
+				</article>
+				<article class="endurance-card">
+					<div class="endurance-icon"><i class="fa-solid fa-dumbbell" aria-hidden="true"></i></div>
+					<h3>Strength &amp; Calisthenics</h3>
+					<p>A weekly mix of weight training and calisthenics progressions. Pull-ups, dips, front-lever work — body-weight skill ladders that reward consistency over intensity.</p>
+				</article>
+				<article class="endurance-card">
+					<div class="endurance-icon"><i class="fa-solid fa-mountain" aria-hidden="true"></i></div>
+					<h3>Scout &amp; Outdoors</h3>
+					<p>Years in scouting taught me to plan trips, lead small teams, and stay calm when the weather turns. The Scout Journey project came from that world.</p>
+				</article>
+			</div>
+
+			<blockquote class="endurance-quote">
+				&ldquo;Mile 60 of a 100&#8209;k race feels a lot like hour eight of a hackathon. The trick is the same: keep moving, eat something, fix one thing at a time.&rdquo;
+			</blockquote>
+		</section>
+
+		<section id="certifications" class="section">
+			<div class="section-header">
+				<span class="eyebrow">05 — Certifications</span>
+				<h2>Receipts</h2>
+				<p class="section-sub">Networking fundamentals plus a self-directed dive into machine learning back in 2022 — well before LLMs were everyone's daily driver.</p>
+			</div>
+
+			<article class="cert-card cert-card--featured">
+				<div class="cert-meta">
+					<i class="fa-solid fa-network-wired cert-icon" aria-hidden="true"></i>
+					<div>
+						<h3>Cisco Certified Network Associate (CCNA)</h3>
+						<p class="cert-sub">Routing, switching, IP services, security fundamentals, automation.</p>
+					</div>
+				</div>
+				<img src="images/ccna-certificate.png" alt="Cisco Certified Network Associate certificate awarded to Marios Georgiades" class="certificate-image" loading="lazy" />
+				<details class="cert-topology">
+					<summary>Lab topology</summary>
+					<pre class="network-topology">
         [ ISP Cloud ]
               |
        .-----[ R1 ]-----.
-       | (Router)     |
-    [ SW1 ]         [ SW2 ]
-(L2 Switch)      (L2 Switch)
+       |   (Router)     |
+    [ SW1 ]          [ SW2 ]
+ (L2 Switch)      (L2 Switch)
    /   \            /   \
 [PC1] [PC2]     [SRV1] [PC3]
-						</pre>
-					</article>
-				</section>
+					</pre>
+				</details>
+			</article>
+
+			<div class="cert-grid">
+				<article class="cert-card cert-card--kaggle">
+					<div class="cert-meta">
+						<span class="cert-issuer-badge">kaggle</span>
+						<div>
+							<h3>Intro to Machine Learning</h3>
+							<p class="cert-sub">Kaggle Learn · Issued 25 Aug 2022 · Instructor Dan Becker</p>
+						</div>
+					</div>
+					<p class="cert-blurb">Decision trees, random forests, model validation, under/overfitting, train/test splits — the foundations I leaned on when later building local-LLM tooling.</p>
+					<ul class="chips chips-sm"><li>Python</li><li>scikit-learn</li><li>Decision trees</li><li>Random forests</li></ul>
+				</article>
+
+				<article class="cert-card cert-card--kaggle">
+					<div class="cert-meta">
+						<span class="cert-issuer-badge">kaggle</span>
+						<div>
+							<h3>Pandas</h3>
+							<p class="cert-sub">Kaggle Learn · Issued 26 Aug 2022 · Instructor Aleksey Bilogur</p>
+						</div>
+					</div>
+					<p class="cert-blurb">DataFrames, indexing &amp; selection, summary functions, grouping, joining, and the cleaning rituals every data project starts with.</p>
+					<ul class="chips chips-sm"><li>Python</li><li>pandas</li><li>Data wrangling</li><li>EDA</li></ul>
+				</article>
 			</div>
+		</section>
 
-			<footer id="footer">
-				<section class="split contact">
-					<section>
-						<h3>Social</h3>
-						<ul class="icons alt">
-							<li><a href="https://github.com/MariosGeorgiades" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</section>
-				</section>
-			</footer>
-
-			<div id="copyright">
-				<ul><li>&copy; Marios Georgiades</li><li>Design: <a href="https://html5up.net">HTML5 UP</a> (Remixed)</li></ul>
+		<section id="contact" class="section section-contact">
+			<div class="section-header center">
+				<span class="eyebrow">06 — Contact</span>
+				<h2>Let's build something</h2>
+				<p class="section-sub">Internship, hackathon team-up, or just a hello — inbox is open.</p>
 			</div>
+			<div class="contact-actions">
+				<a class="btn btn-primary" href="https://github.com/MariosGeorgiades" rel="noopener">
+					<i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+				</a>
+				<a class="btn btn-ghost" href="https://www.linkedin.com/in/marios-georgiades" rel="noopener">
+					<i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+				</a>
+				<a class="btn btn-ghost" href="mailto:marios.subscription@gmail.com">
+					<i class="fa-solid fa-envelope" aria-hidden="true"></i> Email me
+				</a>
+				<a class="btn btn-ghost" href="https://github.com/MariosGeorgiades?tab=repositories" rel="noopener">
+					<i class="fa-solid fa-folder-open" aria-hidden="true"></i> All repositories
+				</a>
+			</div>		</section>
 
+	</main>
+
+	<footer id="footer" role="contentinfo">
+		<div class="footer-inner">
+			<div class="footer-brand">
+				<span class="brand-bracket">[</span>MG<span class="brand-bracket">]</span>
+				<span>Marios Georgiades · Nicosia, CY</span>
+			</div>
+			<ul class="icons alt">
+				<li><a href="https://github.com/MariosGeorgiades" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+				<li><a href="https://www.linkedin.com/in/marios-georgiades" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+				<li><a href="mailto:marios.subscription@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span class="label">Email</span></a></li>
+			</ul>
+			<div class="footer-controls">
+				<button id="motion-toggle" class="btn btn-ghost btn-sm" aria-label="Toggle background animations">
+					<i class="fa-solid fa-wave-square" aria-hidden="true"></i> FX on
+				</button>
+			</div>
 		</div>
+		<p class="footer-meta">© <span id="copyright-year">2026</span> Marios Georgiades. Built with stubbornness and too much coffee.</p>
+	</footer>
 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script src="assets/js/gems.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/particles.js"></script>
 
-	</body>
+</body>
+
 </html>

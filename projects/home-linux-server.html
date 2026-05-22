@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Home Linux Server — Marios Georgiades</title>
+	<meta name="description" content="Self-hosted Linux homelab. Docker, Nginx Proxy Manager, Pi-hole, Plex, Nextcloud — a private, encrypted private cloud." />
+	<meta name="theme-color" content="#050608" />
+
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; connect-src 'self'" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+	<link rel="stylesheet" href="../main.css" />
+	<script type="module">
+		import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+		mermaid.initialize({ startOnLoad: true, theme: 'dark', securityLevel: 'loose' });
+	</script>
+	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Crect%20width=%2264%22%20height=%2264%22%20rx=%2212%22%20fill=%22%23050608%22/%3E%3Ctext%20x=%2232%22%20y=%2240%22%20text-anchor=%22middle%22%20font-family=%22Orbitron,monospace%22%20font-weight=%22900%22%20font-size=%2226%22%20fill=%22%2300f0ff%22%3EMG%3C/text%3E%3C/svg%3E" />
+</head>
+
+<body class="is-preload project-page">
+
+	<a href="#main-content" class="skip-link">Skip to content</a>
+	<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+	<header id="topnav" role="banner">
+		<a href="../index.html" class="nav-brand" aria-label="Home"><span class="brand-bracket">[</span>MG<span class="brand-bracket">]</span></a>
+		<nav id="primary-nav" aria-label="Primary">
+			<ul id="nav-list">
+				<li><a href="../index.html#projects">All projects</a></li>
+				<li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back</a>
+
+	<main id="main-content">
+		<header class="project-hero">
+			<span class="eyebrow">Case study</span>
+			<h1>Home Linux Server — Lab Architecture</h1>
+			<p class="lead">A deep dive into my personal self-hosted infrastructure: what broke, what I fixed, and what I'd do differently next time.</p>
+			<ul class="chips" style="margin-top: 1rem;">
+				<li>Linux</li><li>Docker</li><li>Nginx Proxy Manager</li><li>Bash</li><li>Self-hosting</li>
+			</ul>
+		</header>
+
+		<div class="project-details">
+			<section class="project-section">
+				<h2>The Problem</h2>
+				<p>Cloud subscriptions were stacking up — password manager, file storage, media server, dev environment. Each one a monthly bill and a privacy compromise. I wanted a single, centralized stack I owned end-to-end.</p>
+			</section>
+
+			<section class="project-section">
+				<h2>The Tech Stack</h2>
+				<div class="tech-stack-icons">
+					<i class="fa-brands fa-linux" title="Linux"></i>
+					<i class="fa-brands fa-docker" title="Docker"></i>
+					<i class="fa-solid fa-terminal" title="Bash"></i>
+					<i class="fa-solid fa-server" title="Self-Hosting"></i>
+					<i class="fa-solid fa-shield-halved" title="Security"></i>
+				</div>
+			</section>
+
+			<section class="project-section">
+				<h2>The Challenge</h2>
+				<p>The hardest part was <strong>network security</strong> and <strong>reverse proxying</strong>. Exposing services to my own remote access while keeping intruders out required firewalls, SSL termination, fail2ban, and a tight authentication layer in front of every container.</p>
+			</section>
+
+			<section class="project-section">
+				<h2>System Architecture</h2>
+				<p>How traffic flows from the internet through the reverse proxy to the Docker containers:</p>
+				<div class="mermaid">
+graph TD
+	Internet((Internet)) -->|HTTPS/443| Router[Home Router]
+	Router -->|Port Forwarding| Server[Linux Server]
+	subgraph Server Environment
+		Nginx[Nginx Proxy Manager]
+		subgraph Docker Containers
+			Plex[Plex Media Server]
+			Nextcloud[Nextcloud Storage]
+			Portainer[Portainer Manager]
+			PiHole[Pi-Hole DNS]
+		end
+		Nginx -->|Proxy Pass| Plex
+		Nginx -->|Proxy Pass| Nextcloud
+		Nginx -->|Proxy Pass| Portainer
+		Nginx -->|Proxy Pass| PiHole
+	end
+	style Internet fill:#0b0d12,stroke:#00f0ff,stroke-width:2px,color:#fff
+	style Router   fill:#0b0d12,stroke:#ff2bd6,stroke-width:2px,color:#fff
+	style Server   fill:#0b0d12,stroke:#39ff14,stroke-width:2px,color:#fff
+	style Nginx    fill:#0b0d12,stroke:#00f0ff,stroke-width:3px,color:#00f0ff
+				</div>
+			</section>
+
+			<section class="project-section">
+				<h2>The Solution</h2>
+				<p>I orchestrated everything with <strong>Docker Compose</strong> so dependencies start in the right order. <strong>Nginx Proxy Manager</strong> handles SSL termination via Let's Encrypt and routes traffic by subdomain. The result: <code>plex.marios.home</code>, <code>cloud.marios.home</code>, all behind HTTPS, all accessible from anywhere — and all owned by me.</p>
+			</section>
+
+			<section class="project-section">
+				<h2>What I Learned</h2>
+				<p>Reverse-proxy debugging gets you intimate with HTTP. Container networking will humble you. And nothing teaches Linux faster than locking yourself out of your own server at 1am.</p>
+			</section>
+
+			<ul class="actions special">
+				<li><a href="https://github.com/MariosGeorgiades" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub</a></li>
+				<li><a href="../index.html#projects" class="btn btn-ghost"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All projects</a></li>
+			</ul>
+		</div>
+	</main>
+
+	<footer id="footer" role="contentinfo">
+		<div class="footer-inner">
+			<div class="footer-brand"><span class="brand-bracket">[</span>MG<span class="brand-bracket">]</span><span>Marios Georgiades · Nicosia, CY</span></div>
+			<ul class="icons alt">
+				<li><a href="https://github.com/MariosGeorgiades" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+				<li><a href="https://www.linkedin.com/in/marios-georgiades" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+				<li><a href="mailto:marios.subscription@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span class="label">Email</span></a></li>
+			</ul>
+		</div>
+		<p class="footer-meta">© <span id="copyright-year">2026</span> Marios Georgiades.</p>
+	</footer>
+
+	<script src="../assets/js/main.js"></script>
+	<script src="../assets/js/particles.js"></script>
+</body>
+</html>

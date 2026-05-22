@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Local AI &amp; LLMs — Marios Georgiades</title>
+	<meta name="description" content="Running and fine-tuning open-source LLMs (Llama, Mistral) entirely offline. Quantization, llama.cpp, private inference." />
+	<meta name="theme-color" content="#050608" />
+
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; connect-src 'self'" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+	<link rel="stylesheet" href="../main.css" />
+	<script type="module">
+		import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+		mermaid.initialize({ startOnLoad: true, theme: 'dark', securityLevel: 'loose' });
+	</script>
+	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Crect%20width=%2264%22%20height=%2264%22%20rx=%2212%22%20fill=%22%23050608%22/%3E%3Ctext%20x=%2232%22%20y=%2240%22%20text-anchor=%22middle%22%20font-family=%22Orbitron,monospace%22%20font-weight=%22900%22%20font-size=%2226%22%20fill=%22%2300f0ff%22%3EMG%3C/text%3E%3C/svg%3E" />
+</head>
+
+<body class="is-preload project-page">
+
+	<a href="#main-content" class="skip-link">Skip to content</a>
+	<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+	<header id="topnav" role="banner">
+		<a href="../index.html" class="nav-brand" aria-label="Home"><span class="brand-bracket">[</span>MG<span class="brand-bracket">]</span></a>
+		<nav id="primary-nav" aria-label="Primary">
+			<ul id="nav-list">
+				<li><a href="../index.html#projects">All projects</a></li>
+				<li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back</a>
+
+	<main id="main-content">
+		<header class="project-hero">
+			<span class="eyebrow">Case study</span>
+			<h1>Local AI &amp; LLMs — Offline Intelligence</h1>
+			<p class="lead">Running state-of-the-art language models on consumer hardware. Private, offline, no telemetry.</p>
+			<ul class="chips" style="margin-top: 1rem;">
+				<li>Python</li><li>Llama / Mistral</li><li>Quantization</li><li>llama.cpp</li><li>Docker</li>
+			</ul>
+		</header>
+
+		<div class="project-details">
+			<section class="project-section">
+				<h2>The Problem</h2>
+				<p>Cloud AI is powerful but comes with privacy concerns, latency, and recurring costs. I wanted a stack that could reason, code, and chat completely offline — my data never leaves my network.</p>
+			</section>
+
+			<section class="project-section">
+				<h2>The Tech Stack</h2>
+				<div class="tech-stack-icons">
+					<i class="fa-brands fa-python" title="Python"></i>
+					<i class="fa-solid fa-brain" title="Machine Learning"></i>
+					<i class="fa-solid fa-microchip" title="Hardware"></i>
+					<i class="fa-brands fa-docker" title="Docker"></i>
+					<i class="fa-solid fa-terminal" title="CLI"></i>
+				</div>
+			</section>
+
+			<section class="project-section">
+				<h2>The Challenge</h2>
+				<p>The hardest part was <strong>optimization</strong>. Running a multi-billion-parameter model on a consumer GPU means careful quantization (GGUF), CPU layer offloading, and managing system RAM to avoid OOM crashes mid-generation.</p>
+			</section>
+
+			<section class="project-section">
+				<h2>Inference Pipeline</h2>
+				<p>How a user prompt travels through the local stack to generate a response:</p>
+				<div class="mermaid">
+sequenceDiagram
+	participant User
+	participant WebUI as WebUI
+	participant API as API Layer
+	participant Model as Llama-3 (Quantized)
+	participant Hardware as GPU/CPU
+	User->>WebUI: Enters Prompt
+	WebUI->>API: Formats Request (JSON)
+	API->>Model: Tokenizes Input
+	Model->>Hardware: Loads Layers into VRAM
+	Hardware-->>Model: Computes Attention
+	Model-->>API: Streams Tokens
+	API-->>WebUI: Streams Text
+	WebUI-->>User: Displays Response
+				</div>
+			</section>
+
+			<section class="project-section">
+				<h2>The Solution</h2>
+				<p>I used <strong>llama.cpp</strong> for efficient inference on generic hardware. With 4-bit quantization, Llama-3 dropped from 16 GB to under 6 GB of memory and ran smoothly on my GPU. I also exposed an API endpoint so other apps on the homelab (including my smart-home glue) can query the model.</p>
+			</section>
+
+			<section class="project-section">
+				<h2>What I Learned</h2>
+				<p>Quantization is a wild art — the difference between Q4_K_M and Q5_K_S is real and you can <em>feel</em> it in the outputs. Streaming tokens is more fun than batched generation. And running your own model makes you appreciate just how much engineering is hidden behind a chat box.</p>
+			</section>
+
+			<ul class="actions special">
+				<li><a href="https://github.com/MariosGeorgiades" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-github" aria-hidden="true"></i> View on GitHub</a></li>
+				<li><a href="../index.html#projects" class="btn btn-ghost"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All projects</a></li>
+			</ul>
+		</div>
+	</main>
+
+	<footer id="footer" role="contentinfo">
+		<div class="footer-inner">
+			<div class="footer-brand"><span class="brand-bracket">[</span>MG<span class="brand-bracket">]</span><span>Marios Georgiades · Nicosia, CY</span></div>
+			<ul class="icons alt">
+				<li><a href="https://github.com/MariosGeorgiades" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+				<li><a href="https://www.linkedin.com/in/marios-georgiades" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+				<li><a href="mailto:marios.subscription@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span class="label">Email</span></a></li>
+			</ul>
+		</div>
+		<p class="footer-meta">© <span id="copyright-year">2026</span> Marios Georgiades.</p>
+	</footer>
+
+	<script src="../assets/js/main.js"></script>
+	<script src="../assets/js/particles.js"></script>
+</body>
+</html>

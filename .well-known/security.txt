@@ -1,0 +1,7 @@
+# security.txt (RFC 9116)
+# Learn more: https://securitytxt.org/
+
+Contact: https://github.com/MariosGeorgiades
+Preferred-Languages: en
+Policy: https://github.com/MariosGeorgiades/website/blob/main/SECURITY.md
+Expires: 2026-10-25T00:00:00.000Z
