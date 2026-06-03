@@ -1308,6 +1308,157 @@ p  { color: var(--text-dim); }
 	}
 }
 
+
+
+/* ----- Experience (timeline-style) ----- */
+.exp-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.exp-item {
+	position: relative;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-left: 3px solid var(--neon-cyan);
+	border-radius: var(--radius);
+	padding: 1.4rem 1.5rem;
+	transition: border-color 220ms var(--ease), transform 220ms var(--ease);
+}
+.exp-item:hover { transform: translateY(-2px); border-color: var(--border-strong); border-left-color: var(--neon-pink); }
+.exp-head {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 0.25rem 1rem;
+	align-items: baseline;
+	margin-bottom: 0.85rem;
+}
+.exp-head h3 {
+	color: var(--text);
+	font-family: var(--font-display);
+	font-size: 1rem;
+	letter-spacing: 0.04em;
+	text-transform: none;
+	margin: 0;
+	grid-column: 1 / 2;
+}
+.exp-org {
+	grid-column: 1 / 2;
+	font-size: 0.92rem;
+	color: var(--neon-cyan);
+	font-family: var(--font-mono);
+}
+.exp-date {
+	grid-column: 2 / 3;
+	grid-row: 1 / 3;
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--text-mute);
+	white-space: nowrap;
+}
+.exp-bullets {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	padding-left: 1.1rem;
+	list-style: disc outside;
+	color: var(--text-dim);
+	font-size: 0.95rem;
+}
+.exp-bullets li::marker { color: var(--neon-cyan); }
+.exp-bullets strong { color: var(--text); }
+
+/* Mobile fold for exp-head */
+@media (max-width: 640px) {
+	.exp-item { padding: 1.15rem 1.15rem; }
+	.exp-head { grid-template-columns: 1fr; }
+	.exp-date { grid-column: 1; grid-row: auto; font-size: 0.72rem; }
+	.exp-bullets { font-size: 0.9rem; }
+}
+
+/* ----- Mini-creds list (additional credentials row) ----- */
+.mini-creds {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+	gap: 0.6rem;
+}
+.mini-creds li {
+	display: flex; align-items: center; gap: 0.7rem;
+	padding: 0.8rem 1rem;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+	color: var(--text-dim);
+	font-size: 0.9rem;
+}
+.mini-creds li i { color: var(--neon-cyan); font-size: 0.95rem; flex-shrink: 0; }
+.mini-creds li strong { color: var(--text); font-weight: 600; }
+
+/* ----- Honours grid ----- */
+.honours-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1rem;
+}
+.honour {
+	display: flex; gap: 0.95rem;
+	padding: 1.1rem 1.2rem;
+	background: linear-gradient(160deg, rgba(255, 184, 77, 0.05), rgba(255, 184, 77, 0.0)), var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	transition: border-color 220ms var(--ease), transform 220ms var(--ease);
+}
+.honour:hover { border-color: var(--neon-amber); transform: translateY(-2px); }
+.honour-icon {
+	width: 38px; height: 38px;
+	flex-shrink: 0;
+	display: grid; place-items: center;
+	border-radius: 8px;
+	background: rgba(255, 184, 77, 0.08);
+	border: 1px solid rgba(255, 184, 77, 0.4);
+	color: var(--neon-amber);
+}
+.honour h4 {
+	color: var(--text);
+	font-family: var(--font-display);
+	font-size: 0.92rem;
+	letter-spacing: 0.04em;
+	margin-bottom: 0.3rem;
+}
+.honour p {
+	font-size: 0.88rem;
+	color: var(--text-dim);
+	margin: 0;
+}
+.honour-meta {
+	display: block;
+	margin-top: 0.35rem;
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.12em;
+	color: var(--text-mute);
+	text-transform: uppercase;
+}
+
+/* ----- CV button accent ----- */
+.btn-cv {
+	background: linear-gradient(135deg, var(--neon-amber), var(--neon-pink));
+	border-color: var(--neon-amber);
+	color: #001018;
+	box-shadow: 0 0 0 1px rgba(255, 184, 77, 0.4) inset, 0 8px 22px rgba(255, 184, 77, 0.18);
+}
+.btn-cv:hover {
+	background: linear-gradient(135deg, #ffd16b, var(--neon-pink));
+	box-shadow: 0 12px 32px rgba(255, 184, 77, 0.35);
+	color: #001018;
+}
+
+@media (max-width: 640px) {
+	.honour { padding: 1rem; gap: 0.75rem; }
+	.honour-icon { width: 34px; height: 34px; }
+	.honour h4 { font-size: 0.88rem; }
+	.honour p { font-size: 0.82rem; }
+	.mini-creds li { font-size: 0.85rem; padding: 0.7rem 0.85rem; }
+}
+
 /* ============================================================
    Mobile optimization
    ============================================================ */
