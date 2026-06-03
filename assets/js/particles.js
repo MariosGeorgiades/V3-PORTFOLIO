@@ -7,6 +7,11 @@
 	var canvas = document.getElementById('bg-canvas');
 	if (!canvas || !canvas.getContext) return;
 	if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+	// Skip on phones (saves battery, fixes scroll jank)
+	if (window.matchMedia && (window.matchMedia('(max-width: 640px)').matches || window.matchMedia('(hover: none) and (pointer: coarse)').matches)) {
+		canvas.style.display = 'none';
+		return;
+	}
 
 	var ctx = canvas.getContext('2d');
 	var width, height;
