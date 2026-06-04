@@ -656,15 +656,17 @@ p  { color: var(--text-dim); }
 	transform: translateY(-1px);
 }
 .action-link.action-primary {
-	color: #001018;
-	background: linear-gradient(120deg, var(--neon-cyan), var(--neon-pink));
-	border-color: transparent;
-	font-weight: 700;
+	color: var(--neon-cyan);
+	background: rgba(0, 240, 255, 0.08);
+	border-color: var(--neon-cyan);
+	font-weight: 600;
 }
 .action-link.action-primary:hover {
 	color: #001018;
+	background: var(--neon-cyan);
+	border-color: var(--neon-cyan);
 	transform: translateY(-2px);
-	box-shadow: 0 8px 22px rgba(0, 240, 255, 0.25);
+	box-shadow: 0 6px 18px rgba(0, 240, 255, 0.25);
 }
 .action-link.action-muted {
 	color: var(--text-mute);
@@ -1459,6 +1461,91 @@ p  { color: var(--text-dim); }
 	.mini-creds li { font-size: 0.85rem; padding: 0.7rem 0.85rem; }
 }
 
+
+
+/* ----- Collapsible <details> styling (Experience + Honours) ----- */
+details.exp-item, details.honour {
+	cursor: default;
+}
+.exp-summary, .honour-summary {
+	cursor: pointer;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	transition: opacity 200ms var(--ease);
+}
+.exp-summary::-webkit-details-marker,
+.honour-summary::-webkit-details-marker { display: none; }
+.exp-summary::marker, .honour-summary::marker { content: ""; }
+
+.exp-summary:hover, .honour-summary:hover { opacity: 0.85; }
+
+/* When opened, summary heading gets a subtle highlight */
+details[open] .exp-summary .exp-head h3,
+details[open] .honour-summary h4 {
+	color: var(--neon-cyan);
+}
+
+/* Chevron indicator on the right */
+.dd-icon {
+	margin-left: auto;
+	flex-shrink: 0;
+	width: 22px; height: 22px;
+	display: grid; place-items: center;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	color: var(--neon-cyan);
+	font-size: 0.75rem;
+	transition: transform 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease);
+}
+.dd-icon::before {
+	content: "";
+	width: 7px; height: 7px;
+	border-right: 1.5px solid currentColor;
+	border-bottom: 1.5px solid currentColor;
+	transform: rotate(45deg) translate(-1px, -1px);
+	transition: transform 220ms var(--ease);
+}
+.exp-summary:hover .dd-icon,
+.honour-summary:hover .dd-icon {
+	border-color: var(--neon-cyan);
+	background: rgba(0, 240, 255, 0.06);
+}
+details[open] .dd-icon {
+	background: rgba(0, 240, 255, 0.1);
+	border-color: var(--neon-cyan);
+	transform: rotate(180deg);
+}
+
+/* Experience-specific override: head should sit flush */
+details.exp-item .exp-summary .exp-head {
+	flex: 1;
+	margin-bottom: 0;
+}
+details.exp-item .exp-bullets {
+	margin-top: 1rem;
+	animation: dd-open 240ms var(--ease);
+}
+@keyframes dd-open {
+	from { opacity: 0; transform: translateY(-4px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Honour-specific override */
+.honour-summary { padding: 0; }
+.honour-title { flex: 1; }
+.honour-title h4 { margin: 0; }
+details.honour .honour-body { margin-top: 0.8rem; animation: dd-open 240ms var(--ease); }
+
+/* Slight indent the body so it visually nests under the summary heading */
+details.honour .honour-body p { padding-left: 50px; }
+@media (max-width: 640px) {
+	details.honour .honour-body p { padding-left: 0; }
+	.dd-icon { width: 24px; height: 24px; }
+}
+
 /* ============================================================
    Mobile optimization
    ============================================================ */
@@ -1539,7 +1626,7 @@ p  { color: var(--text-dim); }
 		font-size: 0.74rem;
 		min-height: 38px;
 	}
-	.action-link.action-primary { flex-basis: 100%; }
+	/* Live demo still flagged as primary but no longer forced full-width — visual weight handled by border + color */
 
 	/* Endurance */
 	.endurance-grid { gap: 1rem; }
