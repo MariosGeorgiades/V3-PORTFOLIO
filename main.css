@@ -2087,3 +2087,19 @@ details.honour .honour-body { padding-left: calc(38px + 1rem); }
 @media (max-width: 360px) {
 	.section-header h2 { font-size: 1.1rem; }
 }
+
+
+/* ----- Footer brand mark grouping ----- */
+.brand-mark {
+	display: inline-flex;
+	align-items: baseline;
+	font-family: var(--font-display);
+	font-weight: 900;
+	letter-spacing: 0.18em;
+}
+.brand-location { white-space: nowrap; }
+
+@media (max-width: 640px) {
+	.brand-location { white-space: normal; font-size: 0.82rem; }
+	.brand-mark { font-size: 1rem; }
+}
