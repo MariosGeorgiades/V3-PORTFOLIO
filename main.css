@@ -2103,3 +2103,10 @@ details.honour .honour-body { padding-left: calc(38px + 1rem); }
 	.brand-location { white-space: normal; font-size: 0.82rem; }
 	.brand-mark { font-size: 1rem; }
 }
+
+
+/* About grid when there's only the copy (profile card removed) */
+.about-grid.about-grid--single {
+	grid-template-columns: 1fr;
+	max-width: 760px;
+}
