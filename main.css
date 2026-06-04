@@ -1401,7 +1401,7 @@ p  { color: var(--text-dim); }
 	gap: 1rem;
 }
 .honour {
-	display: flex; gap: 0.95rem;
+	display: block;
 	padding: 1.1rem 1.2rem;
 	background: linear-gradient(160deg, rgba(255, 184, 77, 0.05), rgba(255, 184, 77, 0.0)), var(--surface);
 	border: 1px solid var(--border);
@@ -1462,6 +1462,188 @@ p  { color: var(--text-dim); }
 }
 
 
+
+
+
+/* ============================================================
+   Enhanced animations & micro-interactions
+   ============================================================ */
+
+/* Hero name — subtle gradient drift */
+.hero-name {
+	background-size: 200% 200%;
+	animation: hero-grad 9s ease-in-out infinite;
+}
+@keyframes hero-grad {
+	0%   { background-position: 0% 50%; }
+	50%  { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+/* Eyebrow chip — soft shimmer on first reveal */
+.section.is-visible .eyebrow,
+.eyebrow.is-visible {
+	animation: chip-glow 1.2s ease-out 0.1s 1 both;
+}
+@keyframes chip-glow {
+	0%   { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.0); }
+	50%  { box-shadow: 0 0 18px 2px rgba(0, 240, 255, 0.25); }
+	100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.0); }
+}
+
+/* Section heading underline — draw on reveal */
+.section-header h2::after {
+	transform-origin: left center;
+	transform: scaleX(0);
+	transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
+}
+.section-header.center h2::after { transform-origin: center; }
+.section.is-visible .section-header h2::after { transform: scaleX(1); }
+
+/* Project / skill / endurance / cert / stat cards — staggered slide-in */
+.reveal {
+	will-change: opacity, transform;
+}
+.reveal { transform: translateY(22px); }
+.reveal.is-visible { transform: translateY(0); }
+
+/* Stagger children inside grids */
+.featured-grid > .reveal:nth-child(1),
+.projects-grid > .reveal:nth-child(1),
+.endurance-grid > .reveal:nth-child(1),
+.honours-grid > details:nth-child(1) { transition-delay: 0ms; }
+.featured-grid > .reveal:nth-child(2),
+.projects-grid > .reveal:nth-child(2),
+.endurance-grid > .reveal:nth-child(2),
+.honours-grid > details:nth-child(2) { transition-delay: 80ms; }
+.featured-grid > .reveal:nth-child(3),
+.projects-grid > .reveal:nth-child(3),
+.endurance-grid > .reveal:nth-child(3),
+.honours-grid > details:nth-child(3) { transition-delay: 160ms; }
+.featured-grid > .reveal:nth-child(4),
+.projects-grid > .reveal:nth-child(4),
+.honours-grid > details:nth-child(4) { transition-delay: 240ms; }
+.projects-grid > .reveal:nth-child(5),
+.honours-grid > details:nth-child(5) { transition-delay: 320ms; }
+.projects-grid > .reveal:nth-child(6) { transition-delay: 400ms; }
+
+/* Honour items animate when section is revealed */
+.honours-grid > details {
+	opacity: 0;
+	transform: translateY(16px);
+	transition: opacity 500ms var(--ease), transform 500ms var(--ease);
+}
+.section.is-visible .honours-grid > details { opacity: 1; transform: translateY(0); }
+
+/* Button — press feedback + diagonal shine on hover */
+.btn { position: relative; overflow: hidden; }
+.btn::after {
+	content: "";
+	position: absolute;
+	top: 0; left: -120%;
+	width: 60%; height: 100%;
+	background: linear-gradient(120deg, transparent, rgba(255,255,255,0.18), transparent);
+	transform: skewX(-22deg);
+	transition: left 600ms var(--ease);
+	pointer-events: none;
+}
+.btn:hover::after { left: 130%; }
+.btn:active { transform: translateY(0) scale(0.97); transition: transform 90ms var(--ease); }
+
+/* Action links — press feedback */
+.action-link:active { transform: scale(0.96); transition: transform 80ms var(--ease); }
+
+/* Chips: subtle hover lift */
+.chips li {
+	transition: transform 180ms var(--ease), background 180ms var(--ease), border-color 180ms var(--ease), color 180ms var(--ease);
+}
+.chips li:hover {
+	transform: translateY(-1px);
+	background: rgba(0, 240, 255, 0.10);
+	border-color: var(--neon-cyan);
+	color: var(--text);
+}
+
+/* Stat cards — number glow + slight rise on hover */
+.stat {
+	will-change: transform;
+}
+.stat:hover .stat-num {
+	filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.45));
+}
+
+/* Project cards — shine sweep on first reveal */
+.project-card { position: relative; overflow: hidden; }
+.project-card.is-visible::after {
+	content: "";
+	position: absolute; top: 0; left: -120%;
+	width: 60%; height: 100%;
+	background: linear-gradient(110deg, transparent, rgba(0, 240, 255, 0.12), transparent);
+	transform: skewX(-20deg);
+	animation: card-shine 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 200ms 1 forwards;
+	pointer-events: none;
+}
+@keyframes card-shine {
+	to { left: 130%; }
+}
+
+/* Top nav — slide down on first load */
+#topnav { animation: nav-drop 600ms cubic-bezier(0.2, 0.8, 0.2, 1) 0s 1 both; }
+@keyframes nav-drop {
+	from { transform: translateY(-100%); opacity: 0; }
+	to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Hero entries — staggered intro */
+.hero-tag, .hero-name, .hero-role, .hero-tagline, .hero-actions, .hero-stats {
+	animation: hero-rise 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.hero-name     { animation-delay: 80ms; }
+.hero-role     { animation-delay: 200ms; }
+.hero-tagline  { animation-delay: 320ms; }
+.hero-actions  { animation-delay: 440ms; }
+.hero-stats    { animation-delay: 560ms; }
+@keyframes hero-rise {
+	from { opacity: 0; transform: translateY(20px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Timeline dot — soft entry */
+.timeline-item {
+	opacity: 0; transform: translateX(-10px);
+	transition: opacity 500ms var(--ease), transform 500ms var(--ease);
+}
+.section.is-visible .timeline-item { opacity: 1; transform: translateX(0); }
+.section.is-visible .timeline-item:nth-child(1) { transition-delay: 80ms; }
+.section.is-visible .timeline-item:nth-child(2) { transition-delay: 200ms; }
+.section.is-visible .timeline-item:nth-child(3) { transition-delay: 320ms; }
+
+/* Experience details — staggered entrance */
+.exp-list > details {
+	opacity: 0; transform: translateY(14px);
+	transition: opacity 480ms var(--ease), transform 480ms var(--ease);
+}
+.section.is-visible .exp-list > details { opacity: 1; transform: translateY(0); }
+.section.is-visible .exp-list > details:nth-child(1) { transition-delay: 50ms; }
+.section.is-visible .exp-list > details:nth-child(2) { transition-delay: 130ms; }
+.section.is-visible .exp-list > details:nth-child(3) { transition-delay: 210ms; }
+.section.is-visible .exp-list > details:nth-child(4) { transition-delay: 290ms; }
+.section.is-visible .exp-list > details:nth-child(5) { transition-delay: 370ms; }
+.section.is-visible .exp-list > details:nth-child(6) { transition-delay: 450ms; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.hero-name, .hero-tag, .hero-role, .hero-tagline, .hero-actions, .hero-stats,
+	.exp-list > details, .timeline-item, .honours-grid > details,
+	#topnav, .project-card.is-visible::after, .btn::after, .eyebrow {
+		animation: none !important;
+		transition: none !important;
+	}
+	.section-header h2::after { transform: scaleX(1) !important; }
+	.reveal, .exp-list > details, .timeline-item, .honours-grid > details {
+		opacity: 1 !important; transform: none !important;
+	}
+}
 
 /* ----- Collapsible <details> styling (Experience + Honours) ----- */
 details.exp-item, details.honour {
@@ -1540,9 +1722,10 @@ details.exp-item .exp-bullets {
 details.honour .honour-body { margin-top: 0.8rem; animation: dd-open 240ms var(--ease); }
 
 /* Slight indent the body so it visually nests under the summary heading */
-details.honour .honour-body p { padding-left: 50px; }
+details.honour .honour-body { padding-left: calc(38px + 1rem); }
+.honour-body p { margin: 0; }
 @media (max-width: 640px) {
-	details.honour .honour-body p { padding-left: 0; }
+	details.honour .honour-body { padding-left: 0; }
 	.dd-icon { width: 24px; height: 24px; }
 }
 
@@ -1581,13 +1764,14 @@ details.honour .honour-body p { padding-left: 50px; }
 	#nav-list a.nav-cta { display: inline-flex; padding: 0.55rem 1rem; }
 
 	/* Hero */
-	.hero-tagline { font-size: 0.95rem; margin-bottom: 1.5rem; }
-	.hero-actions { gap: 0.55rem; margin-bottom: 2rem; }
-	.hero-actions .btn { flex: 1 1 100%; justify-content: center; padding: 0.85rem 1rem; font-size: 0.78rem; }
-	.hero-stats { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
-	.stat { padding: 0.85rem 0.5rem; }
-	.stat-num { font-size: clamp(1.05rem, 4.4vw, 1.5rem); }
-	.stat-label { font-size: 0.66rem; }
+	.hero-tagline { font-size: 0.92rem; margin-bottom: 1.25rem; }
+	.hero-actions { gap: 0.5rem; margin-bottom: 1.5rem; }
+	.hero-actions .btn { flex: 1 1 calc(50% - 0.25rem); justify-content: center; padding: 0.75rem 0.6rem; font-size: 0.72rem; letter-spacing: 0.1em; }
+	.hero-actions .btn.btn-primary { flex-basis: 100%; }
+	.hero-stats { grid-template-columns: repeat(2, 1fr); gap: 0.55rem; max-width: 420px; margin-left: auto; margin-right: auto; }
+	.stat { padding: 0.7rem 0.4rem; border-radius: 10px; }
+	.stat-num { font-size: clamp(0.95rem, 4.4vw, 1.4rem); }
+	.stat-label { font-size: 0.6rem; letter-spacing: 0.1em; margin-top: 0.15rem; }
 
 	/* Buttons (general tap targets) */
 	.btn { padding: 0.85rem 1.15rem; font-size: 0.78rem; min-height: 44px; }
@@ -1689,10 +1873,9 @@ details.honour .honour-body p { padding-left: 50px; }
 	.project-card:hover, .skill-cluster:hover, .endurance-card:hover, .stat:hover, .cert-card:hover { transform: none; }
 }
 
-/* Very small screens */
-@media (max-width: 380px) {
+/* Very small screens (sub-360px — older iPhone SE etc.) */
+@media (max-width: 360px) {
 	.hero-stats { grid-template-columns: 1fr; }
-	.stat { padding: 0.85rem 1rem; }
 	.action-link { flex-basis: 100%; }
 	.brand-bracket { font-size: 0.95em; }
 	.cert-meta { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
