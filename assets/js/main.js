@@ -20,6 +20,7 @@
 
 	ready(function () {
 		document.body.classList.remove('is-preload');
+		initBootSplash();
 		initNav();
 		initSmoothScroll();
 		initScrollSpy();
@@ -270,6 +271,43 @@
 		});
 
 		if (closeBtn) closeBtn.addEventListener('click', closeTerm);
+	}
+
+
+	// ---------- Boot splash ----------
+	function initBootSplash() {
+		var splash = document.getElementById('boot-splash');
+		if (!splash) { document.body.classList.remove('booting'); return; }
+
+		var seen = false;
+		try { seen = sessionStorage.getItem('mg-booted') === '1'; } catch (e) {}
+
+		if (seen || prefersReducedMotion) {
+			splash.classList.add('boot-skip');
+			document.body.classList.remove('booting');
+			return;
+		}
+
+		var dismissed = false;
+		function dismiss() {
+			if (dismissed) return;
+			dismissed = true;
+			try { sessionStorage.setItem('mg-booted', '1'); } catch (e) {}
+			splash.classList.add('boot-out');
+			document.body.classList.remove('booting');
+			window.setTimeout(function () { if (splash.parentNode) splash.parentNode.removeChild(splash); }, 520);
+			document.removeEventListener('keydown', dismiss);
+			splash.removeEventListener('click', dismiss);
+			splash.removeEventListener('touchstart', dismissTouch);
+		}
+		function dismissTouch(e) { dismiss(); }
+
+		document.addEventListener('keydown', dismiss);
+		splash.addEventListener('click', dismiss);
+		splash.addEventListener('touchstart', dismissTouch, { passive: true });
+
+		// Auto-dismiss
+		window.setTimeout(dismiss, 1700);
 	}
 
 })();

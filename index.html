@@ -41,7 +41,26 @@
 	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Crect%20width=%2264%22%20height=%2264%22%20rx=%2212%22%20fill=%22%23050608%22/%3E%3Ctext%20x=%2232%22%20y=%2240%22%20text-anchor=%22middle%22%20font-family=%22Orbitron,monospace%22%20font-weight=%22900%22%20font-size=%2226%22%20fill=%22%2300f0ff%22%3EMG%3C/text%3E%3C/svg%3E" />
 </head>
 
-<body class="is-preload">
+<body class="is-preload booting">
+
+	<!-- Boot splash (shows once per session) -->
+	<div id="boot-splash" aria-hidden="true">
+		<div class="boot-inner">
+			<div class="boot-art" aria-hidden="true">
+				<span class="boot-bracket">[</span><span class="boot-mark">MG</span><span class="boot-bracket">]</span>
+			</div>
+			<div class="boot-lines">
+				<p class="boot-line"><span class="boot-status">BOOT</span> MARIOS_OS v3.0.26</p>
+				<p class="boot-line"><span class="boot-status ok">  OK  </span> Loading kernel modules</p>
+				<p class="boot-line"><span class="boot-status ok">  OK  </span> Mounting /projects ... 9 entries</p>
+				<p class="boot-line"><span class="boot-status ok">  OK  </span> Verifying CCNA &times; 2 credentials</p>
+				<p class="boot-line"><span class="boot-status ok">  OK  </span> Establishing GitHub uplink</p>
+				<p class="boot-line"><span class="boot-status ok">  OK  </span> Ultramarathon module: PASS</p>
+				<p class="boot-line boot-prompt">marios@portfolio:~$ <span class="boot-cursor" aria-hidden="true"></span></p>
+			</div>
+			<p class="boot-hint">tap or press any key to skip</p>
+		</div>
+	</div>
 
 	<a href="#main-content" class="skip-link">Skip to content</a>
 
